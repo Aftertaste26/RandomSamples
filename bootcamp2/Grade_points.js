@@ -3,6 +3,7 @@ let input;
 let grade_Point = 0;
 let Total = 0;
 
+
 while (input !== '') {
 
     input = readline.question('Letter Grades: ');
