@@ -1,0 +1,27 @@
+
+const readline = require('readline-sync')
+const Input = Number(readline.question('Prime Numbers between 0 and : '))
+
+// This will print the prime numbers between 0 and the input value
+for (let number = 0; number < Input; number++) {
+
+    // Resets back to zero every cycle
+    let divisible_number = 0
+
+    // This counts the number of divisible numbers by the assigned number..
+    for (let check = number; check !== 0; check--) {
+
+        if ((number % check) === 0) {
+            divisible_number++
+        }
+
+    }
+
+    // Print prime number every cycle
+    if (divisible_number === 2) {
+        console.log(number)
+    }
+
+}
+
+
