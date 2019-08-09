@@ -1,32 +1,31 @@
-let readline = require('readline-sync');
-let input = readline.question('nth term: ');
-let total = 1;
-let output = total;
-let number = 0;
-let cycle = 0;
-let sum = 0;
+const readline = require('readline-sync')
+let input = Number(readline.question('Height: '))
+let output = 0
+let bounces = 0
 
-console.log(0);
+if (input > 0) {
 
-while (cycle != input) {
+    do {
 
-    if (cycle % 2 === 0) {
+        if (bounces < (input / 2)) {
+            if ((input * (3 / 4) * 1000) % 10 > 5) {
+                input = output = Math.ceil(input * (3 / 4) * 100) / 100
+            } else {
+                input = output = Math.floor(input * (3 / 4) * 100) / 100
+            }
+            console.log(`Bouncing: ${output.toFixed(2)} units`)
+        } else {
 
-        total = total + number;
-        output = total;
+            input = output = (input * (3 / 4)).toFixed(2)
+            console.log(`Bouncing: ${output} units`)
 
-    } else {
+        }
 
-        number = number + total;
-        output = number;
+        
+        bounces++
 
-    }
+    } while (output >= 0.1);
 
-
-
-    console.log(output);
-    sum += output;
-    cycle++;
 }
+console.log(`Number of bounces: ${bounces}`)
 
-console.log(`Sum ${sum}`);
