@@ -18,9 +18,11 @@ https://www.tripadvisor.com.ph/Restaurants-g298466-zfp58-Iloilo_City_Iloilo_Prov
 
 
 const readline = require("readline-sync");
+const chalk = require('chalk')
 
 //---------------------<VARIABLES>-------------------------//
 
+let index;
 let input;
 let random;
 let location_no;
@@ -28,19 +30,29 @@ let Assigned_array;
 let bisanDiin = false
 let proceed = true
 let ERROR = false
+let DEBUG = false
+let CHALK = true
 
 //---------------------------END----------------------------//
 
+//-----------------------<STYLING>-------------------------//
+let heading = chalk.reset
+let body = chalk.reset
+let input_chalk = chalk.reset
+
+if (CHALK) {
+    heading = chalk.bold.whiteBright
+    body = chalk.white
+    Index_chalk = chalk.yellowBright
+    input_chalk = chalk.bold.green
+    Error_chalk = chalk.bold.bgRed
+}
+//END-----------------------<STYLING>-------------------------END//
 
 
 //FIRST_LOOP
 while (proceed) {
     //---------------------<ARRAY_VARIABLES>---------------------//
-
-    let BIN_milktea;
-    let BIN_fastfoods;
-    let BIN_cafe;
-    let BIN_restaurant;
     let CPU = [
         "Lugawoogaw",
         "Paohaus",
@@ -141,30 +153,25 @@ while (proceed) {
         "@CPU Uy Building",
         "@CPU Near gate 3"
     ]
-
-    let choices = new Array()
-    let Category = new Array()
-    let recent_numbers = new Array()
-    let binary = new Array()
-
     //---------------------------END----------------------------//
 
 
 
     //-------------------Choices-PRINTER-Code---------------------//
+    //#LOCATION
 
     Assigned_array = location
 
     proceed = false
 
     console.clear()
-    console.log("\n............FOOD SHUFFLE.........")
-    console.log("  ............W..T..F.............")
-    console.log("\n..........WHERE'S THE FOOD...........\n")
+    console.log(heading("\n............FOOD SHUFFLE........."))
+    console.log(heading("  ............W..T..F............."))
+    console.log(heading("\n..........WHERE'S THE FOOD...........\n"))
 
     //Print Elements of Assigned array
-    for (let index = 0; index < Assigned_array.length - 2; index++) {
-        console.log(` ${index} - ${Assigned_array[index]}`)
+    for (index = 0; index < Assigned_array.length - 2; index++) {
+        console.log(` ${Index_chalk(index)} - ${body(Assigned_array[index])}`)
     }
 
     //ERROR message
@@ -173,12 +180,12 @@ while (proceed) {
         ERROR = false
     }
 
-    input = readline.question("\nEnter No. : ")
+    input = readline.question(input_chalk("\nEnter No. : "))
 
     if (input !== "") {
 
-        //this checks if there is a match in the choices
-        for (let index = 0; index < Assigned_array.length - 2; index++) {
+        //this checks if there is a match in the location index
+        for (index = 0; index < Assigned_array.length - 2; index++) {
 
             if (Number(input) === index) {
                 proceed = true
@@ -194,25 +201,33 @@ while (proceed) {
     //END-------------------Choices-PRINTER-Code---------------------END//
 
 
-    //CHECK THE AVAILABLE RESTAURANT IN THE AREA 
+
+    //===================< PREPARES THE LIST >==========================//
+
+    //CHECKS THE AVAILABLE RESTAURANT IN THE AREA 
+    let BIN_milktea;
+    let BIN_fastfoods;
+    let BIN_cafe;
+    let BIN_restaurant;
+    let CPU_sw = false;
+
     switch (input) {
         case "0"://FESTIVE MALL
-            BIN_milktea = '00011101'
-            BIN_fastfoods = '1100011'
-            BIN_cafe = '000010001001'
-            BIN_restaurant = '00011111111111111111'
+            BIN_milktea = '00011101';
+            BIN_fastfoods = '1100011';
+            BIN_cafe = '000010001001';
+            BIN_restaurant = '00011111111111111111';
             break;
         case "1"://FESTIVE WALK
-            BIN_milktea = '0000001'
-            BIN_fastfoods;
-            BIN_cafe = '001100000100111'
-            BIN_restaurant = '0000000000000000000111111111'
+            BIN_milktea = '0000001';
+            BIN_cafe = '001100000100111';
+            BIN_restaurant = '0000000000000000000111111111';
             break;
         case "2"://SM CITY
-            BIN_milktea = '0001111'
-            BIN_fastfoods = '1111111'
-            BIN_cafe = '110011111'
-            BIN_restaurant = '1111101000001011'
+            BIN_milktea = '0001111';
+            BIN_fastfoods = '1111111';
+            BIN_cafe = '110011111';
+            BIN_restaurant = '1111101000001011';
             break;
         case "3"://ATRIA
             BIN_milktea;
@@ -233,67 +248,66 @@ while (proceed) {
             BIN_restaurant;
             break;
         case "6"://CPU
-            choices[choices.length] = "CPU_FOODS"
-            Category[Category.length] = CPU
+            CPU_sw = true;
             break;
-        default:
-    }
-
-    //THIS INCLUDES THE ELEMENT IN AN ARRAY IF IT HAS VALUE
-    if (BIN_milktea !== undefined) {
-        choices[choices.length] = "Milktea"
-        Category[Category.length] = milktea
-        binary[binary.length] = BIN_milktea
-    }
-    if (BIN_fastfoods !== undefined) {
-        choices[choices.length] = "Fast Foods"
-        Category[Category.length] = fastfoods
-        binary[binary.length] = BIN_fastfoods
-    }
-    if (BIN_cafe !== undefined) {
-        choices[choices.length] = "Cafe"
-        Category[Category.length] = cafe
-        binary[binary.length] = BIN_cafe
-    }
-    if (BIN_restaurant !== undefined) {
-        choices[choices.length] = "Restaurant"
-        Category[Category.length] = restaurant
-        binary[binary.length] = BIN_restaurant
     }
 
 
-    //CONVERTS THE NOT INCLUDED RESTO IN AN ARRAY TO UNDEFINE
-    for (let index = 0; index < binary.length; index++) {
+    //DELETES CHOICES THAT ARE EMPTY #NO BINARY ASSIGNED
+    let binary = [BIN_milktea, BIN_fastfoods, BIN_cafe, BIN_restaurant];
+    let Category_setOf_string = ["Milktea", "Fast Foods", "Cafe", "Restaurant"];
+    let Category_setOf_array = [milktea, fastfoods, cafe, restaurant];
+    let included = 0; //number of included element
 
-        for (let index2 = 0; index2 < Category[index].length; index2++) {
+    for (index = 0; index < binary.length; index++) {
 
-            if ((binary[index])[index2] !== '1') {
-                delete (Category[index])[index2]
+        if (DEBUG) {
+            console.clear()
+            console.log(binary)
+            console.log(`Index: ${index} length ${binary.length} Included ${included}`)
+            readline.question(`${binary[index]}`)
+        }
+
+        if (binary[index] === undefined) {
+            binary.splice(index, 1)
+            Category_setOf_string.splice(index, 1)
+            Category_setOf_array.splice(index, 1)
+            index = -1 + included
+        } else {
+            included++
+        }
+    }
+
+    //DELETES THE NOT INCLUDED RESTO IN AN ARRAY #notAvailableInTheArea
+    for (index = 0; index < binary.length; index++) {
+
+        let limit = Category_setOf_array[index].length
+        let number_of_cycle = 0     //counts the loop
+        let index2 = 0              //to get the the variale in the array
+        included = 0                //number of included element
+
+        while (number_of_cycle < limit) {
+
+            if (DEBUG) {
+                console.clear()
+                console.log(Category_setOf_array[index])
+                console.log(`Number of cycles: ${number_of_cycle} < limit ${limit} Index 2: ${index2} length ${Category_setOf_array[index].length} `)
+                readline.question(`${(Category_setOf_array[index])[index2]} - ${(binary[index])[number_of_cycle]}`)
             }
 
+            if ((binary[index])[number_of_cycle] !== '1') {
+                Category_setOf_array[index].splice(index2, 1)
+                index2 = -1 + included
+            } else {
+                included++
+            }
+            number_of_cycle++
+            index2++
         }
 
     }
 
-    //DELETES THE UNDEFINED ELEMENT IN AN ARRAY
-    for (let index = 0; index < binary.length; index++) {
-
-        for (let index2 = 0; index2 < Category[index].length; index2++) {
-
-            //let x = readline.question(`${(Category[index])[index2]} - ${index2}`)
-
-            if ((Category[index])[index2] === undefined) {
-
-                (Category[index]).splice(index2, 1)
-                index2 = -1
-
-            }
-
-        }
-
-    }
-
-
+    //END===================< PREPARE THE LIST >==========================END//
 
 
 
@@ -308,26 +322,27 @@ while (proceed) {
             bisanDiin = false
 
             //-------------------Choices-PRINTER-Code---------------------//
+            //#CATEGORY
 
-            Assigned_array = choices
+            Assigned_array = Category_setOf_string
 
             proceed = false
 
             console.clear()
-            console.log("\n............FOOD SHUFFLE.........")
-            console.log("  ............W..T..F.............")
-            console.log("\n..........WHERE'S THE FOOD...........\n")
+            console.log(heading("\n............FOOD SHUFFLE........."))
+            console.log(heading("  ............W..T..F............."))
+            console.log(heading("\n..........WHERE'S THE FOOD...........\n"))
 
             //Print Elements of Assigned array
-            for (let index = 0; index < Assigned_array.length; index++) {
-                console.log(` ${index} - ${Assigned_array[index]}`)
+            for (index = 0; index < Assigned_array.length; index++) {
+                console.log(` ${Index_chalk(index)} - ${body(Assigned_array[index])}`)
             }
 
             //ERROR message
-            if (Assigned_array.length===0) {
+            if (Assigned_array.length === 0) {
                 console.log("\n   Without Labor nothing prosfers")
                 console.log("\n      !STILL WORKING ON IT! ")
-                console.log("\n     !press enter to go back! ")
+                console.log("\x1b[31m%s\x1b[0m", "\n     !press enter to go back! ")
             }
 
             //ERROR message
@@ -336,12 +351,22 @@ while (proceed) {
                 ERROR = false
             }
 
-            input = readline.question("\nEnter No. : ")
+            if (!CPU_sw) {
+
+                input = readline.question(input_chalk("\nEnter No. : "))
+
+            } else {
+
+                Assigned_array[Assigned_array.length] = "CPU_FOODS"
+                Category_setOf_array[Category_setOf_array.length] = CPU
+                input = 0
+
+            }
 
             if (input !== "") {
 
-                //this checks if there is a match in the choices
-                for (let index = 0; index < Assigned_array.length; index++) {
+                //this checks if there is a match in the Category_setOf_string index
+                for (index = 0; index < Assigned_array.length; index++) {
 
                     if (Number(input) === index) {
                         proceed = true
@@ -361,6 +386,7 @@ while (proceed) {
             if (proceed) {
 
                 let Selection = "A" //default.. shuffle MODE
+                let recent_numbers = new Array()
 
                 //THIRD_LOOP
                 while (Selection !== "") {
@@ -371,13 +397,13 @@ while (proceed) {
 
                         case "A":
 
-                            //------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>----------//
+                            //-----------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>---------------//
 
                             //ARRAY OF DEFINED VARIABLES
-                            Assigned_array = Category
+                            Assigned_array = Category_setOf_array
 
                             //CHECKING
-                            if (choices[input] === "Bisan Di'in") {
+                            if (Category_setOf_string[input] === "Bisan Di'in") {
                                 bisanDiin = true
                             }
 
@@ -385,9 +411,6 @@ while (proceed) {
                             if (bisanDiin) {
                                 input = Math.trunc((Math.random() * 10) + 1) % Assigned_array.length
                             }
-
-                            //LOCATION ASSIGNING//
-
 
                             //----------------------< MAIN_SHUFFLER >--------------------------//
 
@@ -419,36 +442,41 @@ while (proceed) {
                             //END----------------------< MAIN_SHUFFLER >--------------------------END//
 
 
+                            if (DEBUG) {
+                                console.log(`\nArray Length: ${Category_setOf_array[input].length}`)
+                                console.log(`random OUTPUT: ${random}`)
+                                console.log(recent_numbers)
+                            }
 
-                            //DEBUG
-
-                            /* 
-                            console.log(`\nArray Length: ${Category[input].length}`)
-                            console.log(`random OUTPUT: ${random}`)
-                            console.log(recent_numbers)
-                            */
 
                             //MAIN Ouput
-                            console.log(`\n.....${choices[input]}.....`)
-                            console.log(`\nRandom Picked: ${(Assigned_array[input])[random]}`)
-                            console.log(`\nLocation: ${location[location_no]}`)
+                            console.log(`\n..........${Category_setOf_string[input]}..........`)
+                            console.log("\x1b[36m%s\x1b[34m%s\x1b[0m", "\n.....Random Picked..... ", `\n\n   ${(Assigned_array[input])[random]}`)
+                            console.log("\x1b[33m%s\x1b[0m", `\nLocation: ${location[location_no]}`)
+
+
+                            //END-----------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>---------------END//
 
                             break
 
                         case "B":
 
-                            console.log(`\n.....${choices[input]}.....`)
+                            //------------<SHOW LIST >---------------//
 
-                            for (let index = 0; index < Category[input].length; index++) {
-                                console.log(` ${index + 1} - ${(Category[input])[index]}`)
+                            console.log(`\n.....${Category_setOf_string[input]}.....`)
+
+                            for (index = 0; index < Category_setOf_array[input].length; index++) {
+                                console.log(` ${index + 1} - ${(Category_setOf_array[input])[index]}`)
                             }
+
+                            //END------------<SHOW LIST >---------------END//
 
                             break
 
                         default:
 
                             console.clear()
-                            console.log("! INVALID INPUT !")
+                            console.log("\n! INVALID INPUT !")
 
                     }
 
@@ -469,6 +497,10 @@ while (proceed) {
                     proceed = false
                 }
 
+            }
+
+            if (CPU_sw) {
+                proceed = false
             }
 
         }

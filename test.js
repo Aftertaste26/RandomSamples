@@ -1,31 +1,33 @@
-const readline = require('readline-sync')
-let input = Number(readline.question('Height: '))
-let output = 0
-let bounces = 0
+const chalk = require('chalk');
+const log = console.log;
 
-if (input > 0) {
+// Combine styled and normal strings
+log(chalk.blue('Hello') + ' World' + chalk.red('!'));
 
-    do {
+// Compose multiple styles using the chainable API
+log(chalk.blue.bgRed.bold('Hello world!'));
 
-        if (bounces < (input / 2)) {
-            if ((input * (3 / 4) * 1000) % 10 > 5) {
-                input = output = Math.ceil(input * (3 / 4) * 100) / 100
-            } else {
-                input = output = Math.floor(input * (3 / 4) * 100) / 100
-            }
-            console.log(`Bouncing: ${output.toFixed(2)} units`)
-        } else {
+// Pass in multiple arguments
+log(chalk.blue('Hello', 'World!', 'Foo', 'bar', 'biz', 'baz'));
 
-            input = output = (input * (3 / 4)).toFixed(2)
-            console.log(`Bouncing: ${output} units`)
+// Nest styles
+log(chalk.red('Hello', chalk.underline.bgBlue('world') + '!'));
 
-        }
+// Nest styles of the same type even (color, underline, background)
+log(chalk.green(
+    'I am a green line ' +
+    chalk.blue.underline.bold('with a blue substring') +
+    ' that becomes green again!'
+));
 
-        
-        bounces++
+// ES2015 template literal
+log(`
+CPU: ${chalk.red('90%')}
+RAM: ${chalk.green('40%')}
+DISK: ${chalk.yellow('70%')}
+`);
 
-    } while (output >= 0.1);
-
-}
-console.log(`Number of bounces: ${bounces}`)
-
+// Use RGB colors in terminal emulators that support it.
+log(chalk.keyword('orange')('Yay for orange colored text!'));
+log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
+log(chalk.hex('#DEADED').bold('Bold gray!'));
