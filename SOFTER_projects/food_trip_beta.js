@@ -36,6 +36,8 @@ let CHALK = true
 //---------------------------END----------------------------//
 
 //-----------------------<STYLING>-------------------------//
+let heading_String = ["FOOD SHUFFLE", "W..T..F", "WHERE'S THE FOOD"]
+let heading_length = 50
 let heading = chalk.reset
 let body = chalk.reset
 let input_chalk = chalk.reset
@@ -164,10 +166,9 @@ while (proceed) {
 
     proceed = false
 
-    // TESTING
 
-    let heading_String = ["FOOD SHUFFLE", "W..T..F", "WHERE'S THE FOOD"]
-    let heading_length = 38
+    //---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------//
+
     console.clear()
     for (index = 0; index < heading_String.length; index++) {
 
@@ -186,7 +187,8 @@ while (proceed) {
     }
     console.log("\n")
 
-    //TESTING END
+    //END---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------END//
+
 
     //Print Elements of Assigned array
     for (index = 0; index < Assigned_array.length - 2; index++) {
@@ -347,10 +349,9 @@ while (proceed) {
 
             proceed = false
 
-            // TESTING
 
-            let heading_String = ["FOOD SHUFFLE", "W..T..F", "WHERE'S THE FOOD"]
-            let heading_length = 38
+            //---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------//
+
             console.clear()
             for (index = 0; index < heading_String.length; index++) {
 
@@ -369,7 +370,8 @@ while (proceed) {
             }
             console.log("\n")
 
-            //TESTING END
+            //END---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------END//
+
 
             //Print Elements of Assigned array
             for (index = 0; index < Assigned_array.length; index++) {
@@ -378,6 +380,29 @@ while (proceed) {
 
             //ERROR message
             if (Assigned_array.length === 0) {
+
+                //---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------//
+
+                console.clear()
+                for (index = 0; index < heading_String.length; index++) {
+
+                    let center = Math.floor(heading_String[index].length / 2)
+                    let spaces = ""
+
+                    for (let spaces_number = 0; spaces_number < ((heading_length / 2) - center); spaces_number++) {
+                        spaces += "_"
+                    }
+
+                    if (center % 2 === 0) {
+                        console.log(heading(spaces + heading_String[index] + spaces))
+                    } else {
+                        console.log(heading(spaces + heading_String[index] + (spaces.slice(1))))
+                    }
+                }
+                console.log("\n")
+
+            //END---------------------------<TEXT HEADER SPACING AND BOARDER>-----------------------------END//
+
                 console.log(Error_chalk("       !STILL WORKING ON IT!       "))
                 console.log(Error_chalk("\n     !press enter to go back!      "))
             }
