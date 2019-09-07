@@ -1,39 +1,37 @@
 let readline = require('readline-sync')
 let Hashtag = readline.question('Hashtag: ')
-let converted = ''
-let final_output = ''
-let recent_char = ''
+let output = ''
+let recentChar_is_underScore
 
 for (const character of Hashtag) {
 
-    if (character >= 'A' && character <= 'Z') {
-        converted += ' ' + character
-    } else if (character >= 'a' && character <= 'z') {
-        converted += character
-    } else if (character >= '0' && character <= '9') {
-        converted += character
-    } else if (character === '#') {
-        converted += ''
-    } else if (character === '_') {
-        converted += ' '
-    }
-}
- // removes unnecessary spaces
-for (const character of converted) {
+    if (character >= 'A' && character <= 'Z') {      // UPPERCASE LETTER
 
-    if (character === ' ') {
-
-        if (recent_char !== ' ') {
-            final_output += ' '
+        if (!recentChar_is_underScore) {            // add space       
+            output += ' ' + character
+        } else {
+            output += character                     // no space added
         }
+        recentChar_is_underScore = false
 
     } else {
 
-        final_output += character
-
+        switch (character) {
+            case '_':
+                if (!recentChar_is_underScore) {            // if recent char is not
+                    output += ' '                        // an underscore add space
+                    recentChar_is_underScore = true         // else Fallthru
+                    break                               //  no space will be added
+                }
+            case '#':
+                output += ''                             //Hashtag is removed
+                break
+            default:
+                output += character                      //numbers and symbols is added back
+                recentChar_is_underScore = false
+        }
     }
-
-    recent_char = character
 }
 
-console.log(final_output.trim())
+//print & removes the leading and trailing White spaces from the sting
+console.log(output.trim()) 

@@ -30,7 +30,7 @@ let Assigned_array;
 let bisanDiin = false
 let proceed = true
 let ERROR = false
-let DEBUG = false
+let DEBUG = true
 let CHALK = true
 
 //---------------------------END----------------------------//
@@ -123,10 +123,10 @@ while (proceed) {
         "Chef Mong's Boneless Lechon",
         "Pares Jimburg",
         "Binalot",
-        "Luna'z",
+        "Luna'z", //not
         "Baliwag",
         "Sabor Ilonggo",
-        "Bracq's Deli",
+        "Bracq's Deli",//not
         "Pizza Hut",
         "Classic Savory",
         "Kuya J",

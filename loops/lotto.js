@@ -1,23 +1,20 @@
 let readline = require('readline-sync')
-
 let possible_Numbers = Number(readline.question('Possible Numbers: '))
-let num_Of_num = Number(readline.question('Qty: '))
-let n_factorial = possible_Numbers
-let r_factorial = num_Of_num
-let difference_factorial = possible_Numbers - num_Of_num
+let num_Of_num = Number(readline.question('Qty of Chosen Numbers: '))
+let combination = Math.round(factorial(possible_Numbers) / (factorial(num_Of_num) * factorial(possible_Numbers - num_Of_num)))
 
-for (let index = n_factorial - 1; index > 0; index--) {
-    n_factorial *= index
-}
-
-for (let index = r_factorial - 1; index > 0; index--) {
-    r_factorial *= index
-}
-
-for (let index = difference_factorial - 1; index > 0; index--) {
-    difference_factorial *= index
-}
-
-let combination = Math.round(n_factorial / (r_factorial * difference_factorial))
-
+//print computed value
 console.log(`1 in ${combination}`)
+
+function factorial(number) {
+
+    // this loop multiplies all the preceeding number of the assigned value in the parameter 
+    for (let multiplier = number - 1; multiplier > 0; multiplier--) {
+        number *= multiplier
+    }
+
+    //Value is "returned" back to the "caller"
+    return number
+}
+
+console.log(number)
