@@ -42,5 +42,7 @@ function dataInput() {
     }
 }
 function printChoices() {
-    for (let index = 0;)
+    //for (let index = 0;){
+
+    //}
 }

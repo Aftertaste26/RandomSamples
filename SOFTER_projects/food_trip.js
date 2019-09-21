@@ -120,11 +120,9 @@ function main() {
     let BIN_cafe;
     let BIN_restaurant;
 
-    let location_index = Math.trunc((Math.random() * 10) + 1) % location.length
+    let location_index = choices(location)
 
-    if (!bisanDiin) {
-        location_index = choices(location)
-    }
+   
 
     switch (location_index) {
         case "0"://FESTIVE MALL
@@ -152,7 +150,7 @@ function main() {
             break;
         case "4"://SMALLVILLE
             BIN_milktea;
-            BIN_fastfoods;
+            BIN_fastfoods="011110"
             BIN_cafe;
             BIN_restaurant;
             break;
@@ -178,7 +176,7 @@ function main() {
     let Category_setOf_string = ["Milktea", "Fast Foods", "Cafe", "Restaurant"];
     let Category_setOf_array = [milktea, fastfoods, cafe, restaurant];
     List_filter(binary, Category_setOf_string, Category_setOf_array);
-    randomly(Category_setOf_array, Category_setOf_string, location, location_index, bisanDiin);
+    randomly(Category_setOf_array, Category_setOf_string, location, location_index);
 }
 
 //-----------------<Functions>-----------------------//
@@ -187,7 +185,7 @@ function choices(Assigned_array) {
 
     console.clear()
 
-    Heading_Center(heading_String, heading_length, true, "_", 2)
+    Heading_Center(heading_String, heading_length, "_", 2)
 
     let index;
 
@@ -213,75 +211,72 @@ function choices(Assigned_array) {
         }
 
     } else {
-        Heading_Center(" A R R A Y  D O N T  H A V E  E L E M E N T S ", heading_length, false, " ", 4, 3)
+        Heading_Center(" A R R A Y  D O N T  H A V E  E L E M E N T S ", heading_length, " ", 4, 3)
         readline.question(" >: ")
         main()
     }
 
     return input
 
-}
+}        
+function Heading_Center(Heading, Length, spaceChar, lowerSpacing, upperSpacing) {
 
-function Heading_Center(Heading, Length, array, Char, line_spacing, line_spacing2) {
+    let row = 1
+    let output = ""
+    text = Heading
 
-    /* This function creates a multi-line heading 
-    parameters:
-    heading text: as array or string
-    character length: number */
-
-    if (line_spacing2 === undefined) {
-        line_spacing2 = 0
+    if (upperSpacing === undefined) {
+        upperSpacing = 0
+    }
+    if (spaceChar === undefined) {
+        spaceChar = " "
     }
 
-    for (let newLine = 0; newLine < line_spacing2; newLine++) {
+    // C H A N G I N G   N U M B E R  O F  R O W S
+    if (Heading[0].length > 1) {
+        row = Heading.length
+    }
+
+    // U P P E R   S P A C I N G
+    for (let newLine = 0; newLine < upperSpacing; newLine++) {
         console.log('')
     }
 
-    let row_count = 1
+    for (rowCount = 0; rowCount < row; rowCount++) {
 
-    if (array) {
-        row_count = Heading.length
-    }
-
-    for (index = 0; index < row_count; index++) {
-
-        let headingText = Heading
-        let spaceChar = Char
-
-        if (array) {
-            headingText = Heading[index]
-        }
-        if (spaceChar === undefined) {
-            spaceChar = " "
+        // S T R I N G   T O   A R R A Y
+        if (Heading[0].length > 1) {
+            text = Heading[rowCount]
         }
 
-        let center = Math.floor(headingText.length / 2)
-        let spaces = ""
+        for (let spacesCount = 0; spacesCount < Length; spacesCount++) {
 
-        for (let spaces_number = 0; spaces_number < ((Length / 2) - center); spaces_number++) {
-            spaces += spaceChar
+            let leftSpacing = (Length / 2) - Math.floor(text.length / 2)
+
+            if (spacesCount < leftSpacing || spacesCount > leftSpacing + text.length) {
+                process.stdout.write(spaceChar)
+            }
+
+            if (spacesCount == leftSpacing) {
+                process.stdout.write(text)
+            }
+
         }
 
-        spaces += headingText
-
-        while (spaces.length !== Length) {
-            spaces += spaceChar
-        }
-
-        console.log(spaces)
+        console.log(output)
 
     }
 
-    if (line_spacing === undefined) {
-        line_spacing = 1
+    if (lowerSpacing === undefined) {
+        lowerSpacing = 1
     }
 
-    for (let newLine = 0; newLine < line_spacing; newLine++) {
+    // L O W E R  S P A C I N G
+    for (let newLine = 0; newLine < lowerSpacing; newLine++) {
         console.log('')
     }
 
 }
-
 function List_filter(array_bin, array_string, array_var) {
 
     //DELETES CHOICES THAT ARE EMPTY #NO BINARY ASSIGNED
@@ -340,13 +335,11 @@ function List_filter(array_bin, array_string, array_var) {
     }
 
 }
-
 function ERROR() {
     console.clear()
-    Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, false, " ", 1)
-    Heading_Center(" I N V A L I D  I N P U T ", heading_length, false, " ", 1, 1)
+    Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, " ", 1)
+    Heading_Center(" I N V A L I D  I N P U T ", heading_length, " ", 1, 1)
 }
-
 function randomly(array, Heading, location, locIndex) {
 
     let recent_numbers = []         // list of indexes that already drawn 
@@ -411,11 +404,11 @@ function randomly(array, Heading, location, locIndex) {
 
 
                 //MAIN Ouput
-                Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, false, " ", 0)
-                Heading_Center(" R A N D O M  P I C K E D ! ", heading_length, false, " ", 1)
-                Heading_Center(`  ${Heading[input]}  `, heading_length, false, "=", 1)
-                Heading_Center(`<  ${(Assigned_array[input])[random].toUpperCase()}  >`, heading_length, false, "-", 2, 1)
-                console.log(`Location: ${location[locIndex]}`)
+                Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, " ", 0)
+                Heading_Center(" R A N D O M  P I C K E D ! ", heading_length, " ", 1)
+                Heading_Center(` TYPE: ${Heading[input].toUpperCase()}  `, heading_length, "=", 1)
+                Heading_Center(`${(Assigned_array[input])[random].toUpperCase()}`, heading_length, " ", 1, 0)
+                Heading_Center(`<  Location: ${location[locIndex].toUpperCase()}  >`,heading_length,"-")
 
 
                 //END-----------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>---------------END//
@@ -426,8 +419,8 @@ function randomly(array, Heading, location, locIndex) {
 
                 //------------<SHOW LIST >---------------//
                 console.clear()
-                Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, false, " ", 1)
-                Heading_Center(`  ${Heading[input]}  `, heading_length, false, "=", 1)
+                Heading_Center(" W H E R E ' S  T H E  F O O D ", heading_length, " ", 1)
+                Heading_Center(`  ${Heading[input]}  `, heading_length, "=", 1)
 
                 for (index = 0; index < array[input].length; index++) {
                     console.log(`[${index + 1}] - ${(array[input])[index]}`)
