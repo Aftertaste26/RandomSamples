@@ -14,9 +14,10 @@ let input
 let setup_array
 let reprint_array
 
-let heading = ['C A T E G O R Y', 'T Y P E', 'B R A N D', 'S P E C S', 'D E S C R I P T I O N', 'Q U A N T I T Y', 'P R I C E']
+let heading = ['C A T E G O R Y', 'T Y P E', 'B R A N D', 'S P E C S', 'D E S C R I P T I O N', 'P R I C E', 'Q U A N T I T Y']
 let stocks = [{ name: 'Writing material', type: [{ name: 'Pen', brand: [{ name: 'Pilot', specs: [{ name: 'G-tech', description: [{ name: '5.0', price: '10', qty: '10' }] }] }] }] }]
 
+console.log(JSON.stringify(stocks))
 
 Choices()
 
@@ -200,17 +201,20 @@ function storeData() {
 
             stocks[i].type[j].brand[k].specs[l].description[m].price = input
 
+            reprint()
+
+            input = sentenceCase(readline.question('Qty: '))
+
+        case 6:
+            stocks[i].type[j].brand[k].specs[l].description[m].qty = input
+
 
             //------------------< D E B U G >--------------------//
 
             console.clear()
             console.log('\n N E W   D A T A  A D D E D\n')
-            console.log(stocks)
-            console.log(stocks[i])
-            console.log(stocks[i].type[j])
-            console.log(stocks[i].type[j].brand[k])
-            console.log(stocks[i].type[j].brand[k].specs[l])
-            console.log(stocks[i].type[j].brand[k].specs[l].description[m])
+            console.log(JSON.stringify(stocks),null,2)
+
 
             readline.question('success! data saved')
     }
@@ -228,7 +232,7 @@ function reprint() {
     // P U S H I N G  EXISTING ELEMENT TO REPRINT
     reprint_array.push(sentenceCase(input))
 
-    label = ['Category:', 'Type:', 'Brand:', 'Specs:', 'Description: ']
+    label = ['Category:', 'Type:', 'Brand:', 'Specs:', 'Description: ', 'Price: ', 'Qty: ']
 
 
     //------------------< P R I N T >--------------------//
