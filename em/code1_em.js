@@ -135,15 +135,10 @@ function addStocks() {
 
         //CHECK EXISTENCE
         function check() { //check existence of input
-            for (index = 0; index < stocksAccessArray[counter].length; index++) { //stocks
-                if (input === stocksAccessArray[counter][index].name) {
-                    includes = true
-                    break//checks for match, then breaks if found
-                } else {
-                    includes = false
-                }
-            }
-
+            includes = stocksAccessArray[counter].some(x => x.name == input)
+            index = stocksAccessArray[counter].findIndex(x => x.name == input)
+            readline.questionEMail(`check ${index}`)
+            
             switch (counter) {
                 case 0: //category
                     i = index
@@ -174,7 +169,7 @@ function addStocks() {
             // readline.question('j - ' + j)
         }
 
-        if (check() === false) { //exits loop if false, and after checking BRAND
+        if (!check()) { //exits loop if false, and after checking BRAND
             newData[counter].name = input //counter == original
             newCounter = counter + 1
 
@@ -242,7 +237,7 @@ function addStocks() {
     // console.log(displayData)
 
     // readline.question(counter)
-    if (includes === false) {
+    if (!includes) {
         switch (counter) {                      //base on where check === false
             case 0: // new category
                 newBrand.specs.push(newSpecs)
@@ -268,17 +263,11 @@ function addStocks() {
     l = stocks[i].type[j].brand[k].specs.length - 1
     // readline.question(l)
 
-    if (testRun === true) {
+    if (testRun) {
         //shows saved data array
         readline.question('\nSAVED DATA:')
         readline.question('stocks')
-        console.log(stocks)
-        readline.question('type')
-        console.log(stocks[i].type)
-        readline.question('brand')
-        console.log(stocks[i].type[j].brand)
-        readline.question('specs')
-        console.log(stocks[i].type[j].brand[k].specs)
+        console.log(JSON.stringify(stocks, null, 2))
         //shows summary of input
 
         console.log(divider)
@@ -297,12 +286,13 @@ function addStocks() {
     console.log(divider)
     input = readline.question(`\n[+] - Add more stocks\n[^] - Back\n`)
 
-    if (input === '+') {
-        console.clear()
-        addStocks()
-
-    } else if (input === '^') {
-        console.log('back')
-        // addMenu()
+    switch (input) {
+        case '+':
+            console.clear()
+            addStocks()
+            break
+        case '^':
+            console.log('back')
+            break
     }
 }

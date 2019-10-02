@@ -134,3 +134,21 @@ else if (ask_again == `C` || ask_again == `c`) {
     // show the data
 } */
 
+let read = require('readline-sync')
+let array = []
+let input = read.question('')//example 15-16-17
+
+function numberReader(givenData) {
+
+    givenData = Number(givenData)
+
+    while (givenData.toString().length !== 6) {
+        givenData = Number(read.question('PLEASE ENTER THE GIVEN FORMAT MM/DD/YY'))
+    }
+
+    return givenData.toString().replace(/(\d{2})(\d{2})(\d{2})/, "$1/$2/$3")
+}
+
+array.push(numberReader(input))
+console.log(array)
+

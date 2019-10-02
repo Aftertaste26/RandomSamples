@@ -13,6 +13,21 @@ const readline = require("readline-sync");
 let DEBUG = false
 let heading_String = ["  F O O D  S H U F F L E  ", "  W . . T . . F  ", "  W H E R E ' S  T H E  F O O D  "]
 let heading_length = 60
+let location = [
+    {
+        name: "Festive Mall", BIN_milktea: '00011101', BIN_fastfoods: '1100011', BIN_cafe: '000010001001', BIN_restaurant: '00011111111111111111'
+    },
+    {
+        name: "Festive Walk", BIN_milktea: '0000001', BIN_cafe: '001100000100111', BIN_restaurant: '0000000000000000000111111111'
+    },
+    {
+        name: "SM City Iloilo", BIN_milktea: '0001111', BIN_fastfoods: '1111111', BIN_cafe: '110011111', BIN_restaurant: '1111101000001011'
+    },
+    { name: "Atria" },
+    { name: "Smallville" },
+    { name: "Times Square" },
+    { name: "Central Philippine University" }
+]
 
 //-----------------<Functions>-----------------------//
 function main() {
@@ -103,77 +118,21 @@ function main() {
         "Mamusa Art Bistro",
         "Buto't Balat"
     ]
-    let location = [
-        "Festive Mall",
-        "Festive Walk",
-        "SM City Iloilo",
-        "Atria",
-        "Smallville",
-        "Times Square",
-        "Central Philippine University"
-    ]
-
-    //CHECKS THE AVAILABLE RESTAURANT IN THE AREA 
-    let BIN_milktea;
-    let BIN_fastfoods;
-    let BIN_cafe;
-    let BIN_restaurant;
 
     let location_index = choices(location)
 
-    switch (location_index) {
-        case "0"://FESTIVE MALL
-            BIN_milktea = '00011101';
-            BIN_fastfoods = '1100011';
-            BIN_cafe = '000010001001';
-            BIN_restaurant = '00011111111111111111';
-            break;
-        case "1"://FESTIVE WALK
-            BIN_milktea = '0000001';
-            BIN_cafe = '001100000100111';
-            BIN_restaurant = '0000000000000000000111111111';
-            break;
-        case "2"://SM CITY
-            BIN_milktea = '0001111';
-            BIN_fastfoods = '1111111';
-            BIN_cafe = '110011111';
-            BIN_restaurant = '1111101000001011';
-            break;
-        case "3"://ATRIA
-            BIN_milktea;
-            BIN_fastfoods;
-            BIN_cafe;
-            BIN_restaurant;
-            break;
-        case "4"://SMALLVILLE
-            BIN_milktea;
-            BIN_fastfoods = "011110"
-            BIN_cafe;
-            BIN_restaurant;
-            break;
-        case "5"://TIMES SQUARE
-            BIN_milktea;
-            BIN_fastfoods;
-            BIN_cafe;
-            BIN_restaurant;
-            break;
-        case "6"://CPU
-            let Cat_CPU = [CPU_uyBuilding, CPU_nearby]
-            let string_CPU = ["Uy Building", "Nearby Restaurant", "Bisan Di'in"]
-            randomly(Cat_CPU, string_CPU, location, location_index)
-            break;
 
-        default:
-            ERROR()
+/*     let Cat_CPU = [CPU_uyBuilding, CPU_nearby]
+    let string_CPU = ["Uy Building", "Nearby Restaurant", "Bisan Di'in"]
+    randomly(Cat_CPU, string_CPU, location, location_index) */
 
-    }
 
-    let binary = [BIN_milktea, BIN_fastfoods, BIN_cafe, BIN_restaurant];
+    let binary = [location[location_index].BIN_milktea, location[location_index].BIN_fastfoods, location[location_index].BIN_cafe, location[location_index].BIN_restaurant];
     let Category_setOf_string = ["Milktea", "Fast Foods", "Cafe", "Restaurant"];
     let Category_setOf_array = [milktea, fastfoods, cafe, restaurant];
 
     List_filter(binary, Category_setOf_string, Category_setOf_array);
-    randomly(Category_setOf_array, Category_setOf_string, location, location_index);
+    randomly(Category_setOf_array, Category_setOf_string, location.map(x => x.name), location_index);
 
 }
 function Heading_Center(text, length, char, spacing, spacing2) {
@@ -195,19 +154,32 @@ function choices(Assigned_array) {
     console.clear()
     heading_String.forEach(x => Heading_Center(x, heading_length, "_"))
     console.log('\n')
-    Assigned_array.forEach(x => console.log(`[${Assigned_array.indexOf(x)}] - ${x}`))
+    Assigned_array.map(x => x.name||x).forEach(x => console.log(`[${Assigned_array.map(x => x.name||x).indexOf(x)}] - ${x}`))
 
     if (elementCount) {
 
         input = readline.question("\n >: ")
 
-        if (input < elementCount) {
-            if (input === '') {
-                main()
+        if (input) {
+
+            switch (input) {
+                case 'add':
+                    add_(Assigned_array)
+                    break
+                case 'remove':
+                    remove_(Assigned_array)
+                    break
             }
+
+            if (!(input < elementCount)) {
+                readline.question('\n I N V A L I D  I N P U T')
+                choices(Assigned_array)
+            }
+
         } else {
-            readline.question('\n I N V A L I D  I N P U T')
-            choices(Assigned_array)
+
+            main()
+
         }
 
     } else {
@@ -298,15 +270,13 @@ function randomly(array, Heading, location, locIndex) {
 
                 //-----------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>---------------//
                 //CHECKING
-                if (Heading[input] === "Bisan Di'in") {
-                    bisanDiin = true
-                }
+                if (Heading[input] === "Bisan Di'in") { bisanDiin = true }
 
                 //SHUFFLE THE CATERGORY
                 if (bisanDiin) { input = Math.trunc((Math.random() * 10) + 1) % array.length }
 
                 // array of choices
-                Assigned_array = array[input]     
+                Assigned_array = array[input]
 
                 //----------------------< MAIN_SHUFFLER >--------------------------//
 
@@ -377,6 +347,20 @@ function randomly(array, Heading, location, locIndex) {
     } while (mode !== "")
 
     randomly(array, Heading, location, locIndex)
+}
+function add_(Assigned_array) {
+
+    let input = readline.question(' >: ')
+    Assigned_array.push({name:input})
+    main()
+
+}
+function remove_(Assigned_array) {
+
+    let input = readline.question(' >: ')
+    Assigned_array.splice(input, 1)
+    main()
+
 }
 
 //R U N
