@@ -122,9 +122,9 @@ function main() {
     let location_index = choices(location)
 
 
-/*     let Cat_CPU = [CPU_uyBuilding, CPU_nearby]
-    let string_CPU = ["Uy Building", "Nearby Restaurant", "Bisan Di'in"]
-    randomly(Cat_CPU, string_CPU, location, location_index) */
+    /*     let Cat_CPU = [CPU_uyBuilding, CPU_nearby]
+        let string_CPU = ["Uy Building", "Nearby Restaurant", "Bisan Di'in"]
+        randomly(Cat_CPU, string_CPU, location, location_index) */
 
 
     let binary = [location[location_index].BIN_milktea, location[location_index].BIN_fastfoods, location[location_index].BIN_cafe, location[location_index].BIN_restaurant];
@@ -154,7 +154,8 @@ function choices(Assigned_array) {
     console.clear()
     heading_String.forEach(x => Heading_Center(x, heading_length, "_"))
     console.log('\n')
-    Assigned_array.map(x => x.name||x).forEach(x => console.log(`[${Assigned_array.map(x => x.name||x).indexOf(x)}] - ${x}`))
+    Assigned_array.map(x => x.name || x).forEach(x => console.log(`[${Assigned_array.map(x => x.name || x).indexOf(x)}] - ${x}`))
+    console.log('\n[Option]')
 
     if (elementCount) {
 
@@ -162,13 +163,19 @@ function choices(Assigned_array) {
 
         if (input) {
 
-            switch (input) {
-                case 'add':
-                    add_(Assigned_array)
-                    break
-                case 'remove':
-                    remove_(Assigned_array)
-                    break
+            if (input == 'option') {
+
+                console.log(`[add] add new place \n[remove] remove place`)
+                input = readline.question("\n >: ")
+
+                switch (input) {
+                    case 'add':
+                        add_(Assigned_array)
+                        break
+                    case 'remove':
+                        remove_(Assigned_array)
+                        break
+                }
             }
 
             if (!(input < elementCount)) {
@@ -332,6 +339,7 @@ function randomly(array, Heading, location, locIndex) {
                 //END------------<SHOW LIST >---------------END//
 
                 break
+            case 'C':
 
             default:
                 ERROR()
@@ -340,7 +348,7 @@ function randomly(array, Heading, location, locIndex) {
 
         if (bisanDiin) { console.log("\nBISAN DI'IN is active!") }
 
-        console.log("\n[A] - Spin Again.\n[B] - Show List.\n[ENTER] - Back")
+        console.log("\n[A] - Spin Again.\n[B] - Show List.\n[C] - M E N U\n[ENTER] - Back")
 
         mode = readline.question("\n >: ").toUpperCase()
 
@@ -351,7 +359,7 @@ function randomly(array, Heading, location, locIndex) {
 function add_(Assigned_array) {
 
     let input = readline.question(' >: ')
-    Assigned_array.push({name:input})
+    Assigned_array.push({ name: input })
     main()
 
 }
