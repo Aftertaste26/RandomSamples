@@ -365,6 +365,6 @@ let sharetea = {
     review: [{ description: 'I am big fan of their custard pudding with a soft, smooth and silky texture which simply slides down my throat with every slurp.', appetite: 5, by: 'Jane' }]
 }
 
-module.exports.FastFood = [jollibee, chowking, greenwich, mcdo, burgerking, mangInasal, kfc]
-module.exports.Milktea = [macao, sharetea]
+module.exports.FastFood = { name: 'Fast Food', list: [jollibee, chowking, greenwich, mcdo, burgerking, mangInasal, kfc] }
+module.exports.Milktea = { name: 'Milktea', list: [macao, sharetea] }
 module.exports.Category = [this.FastFood, this.Milktea]
