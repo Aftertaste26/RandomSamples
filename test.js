@@ -72,6 +72,202 @@ let mcdo = {
     },
     ]
 }
+let chowking = {
+    name: 'Chowking',
+    description: "Jollibee is that happy place where one can savor a crispy chicken with joy, hence the name Chickenjoy!",
+    category: [{
+        name: 'Burg',
+        menu: [
+            { name: 'Big Mac', price: 201 },
+            { name: 'Burger McDo', price: 108 },
+            { name: 'Cheeseburger', price: 124 },
+            { name: 'Cheeseburger deluxe', price: 149 },
+            { name: 'Cheesy Burger McDo', price: 119 },
+            { name: 'Ebi Burger Meal', price: 177 },
+            { name: 'McCrispy Chicken Fillet Sandwich', price: 119 },
+            { name: 'Double Cheesburger', price: 166 },
+            { name: 'filet-O-Fish', price: 172 },
+            { name: 'McChicken', price: 172 },
+            { name: 'Quarter Pounder with Cheese', price: 201 }
+
+        ]
+    }, {
+        name: 'Chicken & Platters',
+        menu: [
+            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
+            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
+            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: 'Chickenjoy Super Value Meals', price: 128 }
+        ]
+    }, {
+        name: 'Rice Meals',
+        menu: [
+            { name: 'Unltimate Burger Steak ', price: 128 },
+            { name: '1pc Burger Steak', price: 118 },
+            { name: 'Pepper Beef', price: 128 },
+            { name: 'Shanghai Roll', price: 128 },
+        ]
+    },
+    ]
+}
+let greenwich = {
+    name: 'Greenwich',
+    description: "Jollibee is that happy place where one can savor a crispy chicken with joy, hence the name Chickenjoy!",
+    category: [{
+        name: 'Burgers',
+        menu: [
+            { name: 'Big Mac', price: 201 },
+            { name: 'Burger McDo', price: 108 },
+            { name: 'Cheeseburger', price: 124 },
+            { name: 'Cheeseburger deluxe', price: 149 },
+            { name: 'Cheesy Burger McDo', price: 119 },
+            { name: 'Ebi Burger Meal', price: 177 },
+            { name: 'McCrispy Chicken Fillet Sandwich', price: 119 },
+            { name: 'Double Cheesburger', price: 166 },
+            { name: 'filet-O-Fish', price: 172 },
+            { name: 'McChicken', price: 172 },
+            { name: 'Quarter Pounder with Cheese', price: 201 }
+
+        ]
+    }, {
+        name: 'Chicken & Platters',
+        menu: [
+            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
+            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
+            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: 'Chickenjoy Super Value Meals', price: 128 }
+        ]
+    }, {
+        name: 'Rice Meals',
+        menu: [
+            { name: 'Unltimate Burger Steak ', price: 128 },
+            { name: '1pc Burger Steak', price: 118 },
+            { name: 'Pepper Beef', price: 128 },
+            { name: 'Shanghai Roll', price: 128 },
+        ]
+    },
+    ]
+}
+let burgerking = {
+    name: 'Burgerking',
+    description: "Jollibee is that happy place where one can savor a crispy chicken with joy, hence the name Chickenjoy!",
+    category: [{
+        name: 'Burgers',
+        menu: [
+            { name: 'Big Mac', price: 201 },
+            { name: 'Burger McDo', price: 108 },
+            { name: 'Cheeseburger', price: 124 },
+            { name: 'Cheeseburger deluxe', price: 149 },
+            { name: 'Cheesy Burger McDo', price: 119 },
+            { name: 'Ebi Burger Meal', price: 177 },
+            { name: 'McCrispy Chicken Fillet Sandwich', price: 119 },
+            { name: 'Double Cheesburger', price: 166 },
+            { name: 'filet-O-Fish', price: 172 },
+            { name: 'McChicken', price: 172 },
+            { name: 'Quarter Pounder with Cheese', price: 201 }
+
+        ]
+    }, {
+        name: 'Chicken & Platters',
+        menu: [
+            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
+            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
+            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: 'Chickenjoy Super Value Meals', price: 128 }
+        ]
+    }, {
+        name: 'Rice Meals',
+        menu: [
+            { name: 'Unltimate Burger Steak ', price: 128 },
+            { name: '1pc Burger Steak', price: 118 },
+            { name: 'Pepper Beef', price: 128 },
+            { name: 'Shanghai Roll', price: 128 },
+        ]
+    },
+    ]
+}
+let kfc = {
+    name: 'KFC',
+    description: "Jollibee is that happy place where one can savor a crispy chicken with joy, hence the name Chickenjoy!",
+    category: [{
+        name: 'Burgers',
+        menu: [
+            { name: 'Big Mac', price: 201 },
+            { name: 'Burger McDo', price: 108 },
+            { name: 'Cheeseburger', price: 124 },
+            { name: 'Cheeseburger deluxe', price: 149 },
+            { name: 'Cheesy Burger McDo', price: 119 },
+            { name: 'Ebi Burger Meal', price: 177 },
+            { name: 'McCrispy Chicken Fillet Sandwich', price: 119 },
+            { name: 'Double Cheesburger', price: 166 },
+            { name: 'filet-O-Fish', price: 172 },
+            { name: 'McChicken', price: 172 },
+            { name: 'Quarter Pounder with Cheese', price: 201 }
+
+        ]
+    }, {
+        name: 'Chicken & Platters',
+        menu: [
+            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
+            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
+            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: 'Chickenjoy Super Value Meals', price: 128 }
+        ]
+    }, {
+        name: 'Rice Meals',
+        menu: [
+            { name: 'Unltimate Burger Steak ', price: 128 },
+            { name: '1pc Burger Steak', price: 118 },
+            { name: 'Pepper Beef', price: 128 },
+            { name: 'Shanghai Roll', price: 128 },
+        ]
+    },
+    ]
+}
+let mangInasal = {
+    name: 'Mcdonalds',
+    description: "Jollibee is that happy place where one can savor a crispy chicken with joy, hence the name Chickenjoy!",
+    category: [{
+        name: 'Burgers',
+        menu: [
+            { name: 'Big Mac', price: 201 },
+            { name: 'Burger McDo', price: 108 },
+            { name: 'Cheeseburger', price: 124 },
+            { name: 'Cheeseburger deluxe', price: 149 },
+            { name: 'Cheesy Burger McDo', price: 119 },
+            { name: 'Ebi Burger Meal', price: 177 },
+            { name: 'McCrispy Chicken Fillet Sandwich', price: 119 },
+            { name: 'Double Cheesburger', price: 166 },
+            { name: 'filet-O-Fish', price: 172 },
+            { name: 'McChicken', price: 172 },
+            { name: 'Quarter Pounder with Cheese', price: 201 }
+
+        ]
+    }, {
+        name: 'Chicken & Platters',
+        menu: [
+            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
+            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
+            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: 'Chickenjoy Super Value Meals', price: 128 }
+        ]
+    }, {
+        name: 'Rice Meals',
+        menu: [
+            { name: 'Unltimate Burger Steak ', price: 128 },
+            { name: '1pc Burger Steak', price: 118 },
+            { name: 'Pepper Beef', price: 128 },
+            { name: 'Shanghai Roll', price: 128 },
+        ]
+    },
+    ]
+}
+
 
 
 let readline = require('readline-sync')
@@ -147,7 +343,7 @@ function Heading_Center(text, length, char = ' ', spacing, spacing2) {
     }
     return Heading_Center((char + text + char).substr(0, length), length, char, spacing, spacing2)
 }
-function table_Print_Advance(Text, length, index, space) {
+function table_Print_Advance(Text, length, index, space =' ') {
 
     //-------------------------------------< TABULAR TEXT PRINT >--------------------------------------------//
 
@@ -167,7 +363,7 @@ function table_Print_Advance(Text, length, index, space) {
         process.stdout.write("║")
 
         for (let spaces_number = 0; spaces_number < (Math.ceil(Char_length / 2) - (center || 0)); spaces_number++) {
-            Text_Input = ((space || ' ') + Text_Input + (space || ' ')).substring(0, Char_length)        // add spaces
+            Text_Input = (space + Text_Input + space).substring(0, Char_length)        // add spaces
         }
 
         process.stdout.write(Text_Input) // Printed by row

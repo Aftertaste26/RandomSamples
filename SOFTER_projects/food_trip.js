@@ -6,6 +6,9 @@ Goal:
 Ask:
 *location
 *CATEGORY
+*show reults 
+add new shuffler
+
 
 */
 
@@ -155,7 +158,6 @@ function choices(Assigned_array) {
     heading_String.forEach(x => Heading_Center(x, heading_length, "_"))
     console.log('\n')
     Assigned_array.map(x => x.name || x).forEach(x => console.log(`[${Assigned_array.map(x => x.name || x).indexOf(x)}] - ${x}`))
-    console.log('\n[Option]')
 
     if (elementCount) {
 
@@ -348,7 +350,7 @@ function randomly(array, Heading, location, locIndex) {
 
         if (bisanDiin) { console.log("\nBISAN DI'IN is active!") }
 
-        console.log("\n[A] - Spin Again.\n[B] - Show List.\n[C] - M E N U\n[ENTER] - Back")
+        console.log("\n[A] - Spin Again.\n[B] - Show List.\n[ENTER] - Back")
 
         mode = readline.question("\n >: ").toUpperCase()
 
