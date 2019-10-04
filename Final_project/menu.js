@@ -48,9 +48,9 @@ let jollibee = {
     ,
     rating: [3, 3, 5, 5], //set of number
     review: [
-        { description: 'This was my first visit to a Jollibee in the Philippines, having only visited before in Brunei and Hong Kong.I love the Palabok and chicken joy!!!!This is great Filipino fast food - go Jollibee!', appetite: 8, by: 'frank' },
+        { description: 'This was my first visit to a Jollibee in the Philippines, having only visited before in Brunei and Hong Kong.I love the Palabok and chicken joy!!!!This is great Filipino fast food - go Jollibee!', appetite: 8, by: 'Frank' },
         { description: 'Best fast food We ate at Jolibee several times during our 21 day stay in the Philippines. It was a great meal and cheap. You have to get Sarsi pop and the mango peach pie to go with it!', appetite: 15, by: 'Feliz' },
-        { description: 'Bida ang sya with jollibee', appetite: 2, by: 'Ian' }
+        { description: 'Bida ang sya with jollibee', appetite: 2, by: 'Benjie Ian' }
     ]
 }
 let mcdo = {
@@ -210,7 +210,7 @@ let greenwich = {
     ],
     rating: [2, 3, 1, 1], //set of number
     review: [{
-        description: 'I ordered thick crust but got thin crust Terrible: cashier has no change, so my change was incorrect.I ordered thick crust for take out.When I got home and opened the carton it was thin crust.DISAPOINTED', appetite: 5, by: 'Benji'
+        description: 'I ordered thick crust but got thin crust Terrible: cashier has no change, so my change was incorrect.I ordered thick crust for take out.When I got home and opened the carton it was thin crust.DISAPOINTED', appetite: 5, by: 'Benji John'
     }]
 }
 let burgerking = {
@@ -253,7 +253,7 @@ let burgerking = {
     ],
     rating: [1, 1, 2, 5], //set of number
     review: [{
-        description: 'Where big burgers are served. Burger king is the most worth burger I have ever tasted. Their burgers are tender and juicy and the rest of the ingredients are perfectly cooked. Everyone can eat this. I assure you, whooper is the best thing to order.', appetite: 5, by: 'Alejandro'
+        description: 'Where big burgers are served. Burger king is the most worth burger I have ever tasted. Their burgers are tender and juicy and the rest of the ingredients are perfectly cooked. Everyone can eat this. I assure you, whooper is the best thing to order.', appetite: 5, by: 'Luke'
     }]
 }
 let kfc = {
@@ -338,7 +338,7 @@ let mangInasal = {
     },
     ],
     rating: [3, 3, 2, 2], //set of number
-    review: [{ description: 'I loved experiencing Mang Inasal\'s chicken.It is good value for money and there\'s unlimited rice too. I will definitely be back one day!', appetite: 5, by: 'Nat' }]
+    review: [{ description: 'I loved experiencing Mang Inasal\'s chicken.It is good value for money and there\'s unlimited rice too. I will definitely be back one day!', appetite: 5, by: 'Jay' }]
 }
 let macao = {
     name: 'Macao Imperial Tea',
@@ -364,7 +364,8 @@ let sharetea = {
     rating: [3, 3, 2, 2], //set of number
     review: [{ description: 'I am big fan of their custard pudding with a soft, smooth and silky texture which simply slides down my throat with every slurp.', appetite: 5, by: 'Jane' }]
 }
-
+let all = []
 module.exports.FastFood = { name: 'Fast Food', list: [jollibee, chowking, greenwich, mcdo, burgerking, mangInasal, kfc] }
 module.exports.Milktea = { name: 'Milktea', list: [macao, sharetea] }
-module.exports.Category = [this.FastFood, this.Milktea]
+module.exports.All = { name: 'All', list: all.concat(this.Milktea.list, this.FastFood.list) }
+module.exports.Category = [this.All, this.FastFood, this.Milktea]

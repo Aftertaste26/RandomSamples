@@ -1,5 +1,5 @@
- function cube(x) {
-    return x * x * x;
-}
-
-module.exports = cube
+let x =['kye','em']
+let y =['osunro','mallare']
+let all =[]
+all = all.concat(x,y)
+console.log(all)
