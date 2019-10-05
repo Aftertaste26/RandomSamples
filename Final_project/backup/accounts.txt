@@ -5,13 +5,13 @@ let accounts = [
         firstName: 'Kyle',
         lastName: 'Osunero',
         saveData: [{
-            type: 'Restaurant',
-            name: 'Robertos',
+            type: "Restaurant",
+            name: "Robertos",
             date_ID: 1570287487067
         },
         {
-            type: 'Milktea',
-            name: 'Macao Imperial Tea',
+            type: "Milktea",
+            name: "Macao Imperial Tea",
             date_ID: 1570287197281
         },
         {
@@ -32,13 +32,8 @@ let accounts = [
         firstName: 'Edelynn',
         lastName: 'Mallare',
         saveData: [{
-            type: 'Restaurant',
-            name: 'Robertos',
-            date_ID: 1570289865694
-        },
-        {
-            type: 'Fast Food',
-            name: 'Chowking',
+            type: "Restaurant",
+            name: "Robertos",
             date_ID: 1570289865694
         }
         ]
@@ -48,11 +43,7 @@ let accounts = [
         Pass: 'admin',
         firstName: 'Cherry',
         lastName: 'Jaranilla',
-        saveData: [{
-            type: 'Restaurant',
-            name: 'Kap Ising Pancit Molo',
-            date_ID: 1570276015483
-        }]
+        saveData: []
     }
 
 ]
