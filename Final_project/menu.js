@@ -1,7 +1,9 @@
 
 let jollibee = {
     name: 'Jollibee',
-    post: '',
+    description: '',
+    location: 'Festive Mall',
+    specialty:' "Chickenjoy" fried chicken',
     category: [{
         name: 'Burger and Sandwich | Value Meal |',
         menu: [
@@ -79,7 +81,9 @@ let jollibee = {
 }
 let mcdo = {
     name: 'Mcdonalds',
-    post: '',
+    description: '',
+    location: 'Festive',
+    specialty: 'hamburgers, cheeseburgers and french fries',
     category: [{
         name: 'Burgers',
         menu: [
@@ -128,7 +132,9 @@ let mcdo = {
 }
 let chowking = {
     name: 'Chowking',
-    post: '',
+    description: '',
+    location: 'Time Square',
+    specialty: 'Chinese-cuisine food',
     category: [{
         name: 'Family Lauriat',
         menu: [
@@ -211,6 +217,8 @@ let chowking = {
 let greenwich = {
     name: 'Greenwich',
     post: '',
+    location: 'Robinsons Jaro',
+    specialty: 'Pizza & Pasta',
     category: [],
     rating: 0,
     review: [{
@@ -226,6 +234,8 @@ let greenwich = {
 let burgerking = {
     name: 'Burgerking',
     post: '',
+    location: 'Sm City',
+    specialty: 'Burgers',
     category: [],
     rating: 0,
     review: [{
@@ -242,6 +252,8 @@ let kfc = {
     name: 'KFC',
     post: '',
     category: [],//menu
+    location: 'Festive Mall',
+    specialty: 'Fried chicken',
     rating: 0,
     review: [{
         post: 'Eating out in KFC Philippines unlike in India is a always a different experience since they also serve rice along with Hot&Crispy chicken as an addon. I love it since I\'m a rice eater.',
@@ -257,6 +269,8 @@ let kfc = {
 let mangInasal = {
     name: 'Mang Inasal',
     post: '',
+    location: 'Festive Mall',
+    specialty: 'native-style and “nuot-sarap” Chicken Inasal ',
     category: [],
     rating: 0,
     review: [{
@@ -273,6 +287,8 @@ let macao = {
     name: 'Macao Imperial Tea',
     post: '',
     category: [],//menu
+    location: 'Festive Mall',
+    specialty: '',
     rating: 0,
     review: [{
         post: 'Their drinks are so delicious and their staffs are friendly one of best tea shops ever.',
@@ -297,6 +313,8 @@ let sharetea = {
     name: 'Sharetea',
     post: '',
     category: [],//menu
+    location: 'Sm City',
+    specialty: '',
     rating: 0,
     review: [{
         post: 'I am big fan of their custard pudding with a soft, smooth and silky texture which simply slides down my throat with every slurp.',
@@ -310,8 +328,10 @@ let sharetea = {
 }
 let jo_anns = {
     name: 'Jo-ann\'s Fishball',
-    post: '',
+    description: '',
     category: [],//menu
+    location: 'Molo Plaza, Iloilo City',
+    specialty: 'Authentic Fish Ball',
     rating: 0,
     review: [
         {
@@ -335,8 +355,10 @@ let jo_anns = {
 }
 let robertos = {
     name: 'Robertos',
-    post: '',
+    description: '',
     category: [],//menu
+    location: 'JM Basa St., Iloilo City',
+    specialty: 'Queens Siopao & Meatballs',
     rating: 0,
     review: [{
         post: 'I love the siopao, meatballs, and lomi. i\'d loved to comeback and taste other meals they offer.but the restaurant is crowded i hope they could expand',
@@ -360,8 +382,10 @@ let robertos = {
 }
 let kapIsing = {
     name: 'Kap Ising Pancit Molo',
-    post: '',
+    description: '',
     category: [],//menu
+    location: 'Brgy. South San Jose, Molo, Iloilo',
+    specialty: 'Filipino Soup Retaurant',
     rating: 0,
     review: [{
         post: 'We have been ordering pancit molo from kap ising for years. Still the best. The fresh lumpia is also delicious.',

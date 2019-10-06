@@ -63,8 +63,6 @@ function sign_up() {
     firstName = readline.question('First Name >: ')
     lastName = readline.question('Last >: ')
 
-
-
     account.push({
         User: user,
         Pass: pass,
@@ -73,6 +71,8 @@ function sign_up() {
         saveData: []
     })
 
+    let profile = account.find(x => x.User == user)
+    data = profile.saveData
     readline.question('\n' + spacing_('welcome').toUpperCase())
     randomly(menu.All.list)
 }
@@ -203,7 +203,7 @@ function sentence(str, length = 50) {
     console.log(output)
 }
 function more(resto) {
-    let option = ['My Wall', 'Category', 'List', 'Out']
+    let option = ['My Wall', 'Shuffle', 'Category', 'List', 'Out']
     console.log('\n')
     option.forEach((x, y) => side_print(' ', ` ${x} - <${y}>`))
     console.log('\n')
@@ -215,16 +215,19 @@ function more(resto) {
             my_wall()
             break;
         case '1':
+            randomly(menu.All.list)
+
+            break
+        case '2':
             Food_feed(CATEGORY())
             break;
 
-        case '2':
+        case '3':
             list(resto)
             break;
-        case '3':
+        case '4':
             startUp()
             break;
-
         default:
             break;
     }
@@ -306,16 +309,16 @@ function my_wall(page = 0) {
 
     let limit = 2 + (page * 2)
 
-    if (limit > data.length) {
-        limit = data.length
-    }
-
     if (!data.length) {
         let message = [' ', 'Good Food', 'is', 'Good Mood', ' ']
         console.log('\n')
         message.forEach(x => Center(spacing_(x)))
         console.log('\n')
         console.log('no post yet\n')
+    }
+
+    if (limit > data.length) {
+        limit = data.length
     }
 
     for (let Rows = page * 2; Rows < limit; Rows++) {
@@ -358,10 +361,10 @@ function my_wall(page = 0) {
         my_wall(page)
     }
 }
-function heading(window) {
+function heading(name) {
     console.clear()
-    let heading_String = ['', " AFTERTASTE ", `< ${window} >`, '']
-    heading_String.forEach(x => Center(spacing_(x.toUpperCase()), 50, "-"))
+    let heading_String = ['', " • AFTERTASTE • ", ` •${name}• `, '']
+    heading_String.forEach(x => Center(spacing_(x.toUpperCase()), 50, "─"))
 }
 function invalid(i = 0) {
     let message = ['Invalid', 'User/pass is incorect', 'Give it Up!', 'Please Sign up']
@@ -390,7 +393,7 @@ function POST(i = 0, j, k) {
 
             let resto = menu.Category[j].list.map(x => x.name)
 
-            console.log(menu.Category[j].name)
+            console.log(`»${menu.Category[j].name}`)
             resto.forEach((x, y) => console.log(` <${y}> - ${x}`))
 
             k = readline.questionInt(' >: ')
@@ -402,13 +405,16 @@ function POST(i = 0, j, k) {
 
         case 2:
 
-            console.log(menu.Category[j].name)
-            console.log(menu.Category[j].list[k].name)
+            console.log(` » ${menu.Category[j].name}`)
+            console.log(` » ${menu.Category[j].list[k].name}`)
 
-            console.log('\nWrite something...')
+            console.log('\n » Write something...')
             let post = readline.question(' >: ')
 
-            console.log('\nRating...')
+            console.log('\n » Rating...0-5')
+            let rate = readline.questionInt(' >: ')
+
+            console.log('\n » Appetite...0-10')
             let rate = readline.questionInt(' >: ')
             let date_ID = Date.now()
 
@@ -443,13 +449,19 @@ function getDate() {
 }
 function randomly(category, mode = '') {
 
+    let random
     let recent_numbers = []               // list of indexes that already drawn 
     let name = category.map(x => x.name)
-    let rating = category.map(x => x.rating)
+    let Rating = category.map(x => x.rating)
+    let location = category.map(x => x.location)
+    let specialty = category.map(x => x.specialty)
+
+
 
     do {
+
         console.clear()
-        heading('Food Shuffle')
+        heading('Shuffle')
 
         /*     readline.question(name)
             readline.question(rating) */
@@ -457,11 +469,33 @@ function randomly(category, mode = '') {
 
         switch (mode) {
 
-            case '':
+            case "OPTION":
+                Center(spacing_('OPTION'))
+                randomly(category, option())
+                break
+            case "LIST":
+                readline.question('LIST')
+                randomly(category)
+                break
+            case "OUT":
+                startUp()
+                break
+            case "IN":
+                Food_feed(menu.All.list)
+                break
+            case "POST":
+                readline.question()
+                let j = menu.Category.map(x => x.list.map(x => x.name).includes(name[random])).indexOf(true, 1)
+                let k = menu.Category[j].list.map(x => x.name).indexOf(name[random])
+                readline.question('wait')
+                POST(2, j, k)
+                break
+
+            default:
 
                 //----------------------< MAIN_SHUFFLER >--------------------------//
 
-                let random = Math.trunc((Math.random() * 100) + 1) % name.length
+                random = Math.trunc((Math.random() * 100) + 1) % name.length
 
                 if (recent_numbers.length < name.length) {
 
@@ -483,34 +517,29 @@ function randomly(category, mode = '') {
 
                 //END----------------------< MAIN_SHUFFLER >--------------------------END//
 
+
+                //  »  «  ▬  • ─
                 //MAIN Ouput
-                Center(" W H E R E ' S  T H E  F O O D ", 50, " ", 0, 3)
-                Center(" R A N D O M  P I C K E D ! ", 50, " ", 3)
-                //Center(` TYPE: ${Heading[input].toUpperCase()}  `, 50, "=", 1)
-                Center(`${name[random].toUpperCase()}`, 50, " ", 3, 0)
+                Center(" W H E R E ' S  T H E  F O O D ", 50, "_", 0, 3)
+                Center(" R A N D O M  P I C K E D ! ", 50, "─", 2)
+                Center(`  • ${name[random].toUpperCase()} •  `, 50, " ", 1, 0)
+                Center(` Rating: ${rating(Rating[random])} `, 50, " ", 3)
+
+                if (specialty[random]) {
+                    console.log('Known FOR')
+                    sentence(`» ${specialty[random]} «`)
+                }
+                console.log('Location')
+                sentence(`» ${location[random]} «`)
+                console.log('')
+                side_print(' ', '<Post>')
                 //Center(`<  Location: ${location[locIndex].toUpperCase()}  >`, 50, "-")
 
 
                 //END-----------------<THIS CODE RANDOMIZED THE SELETED CATEGORY>---------------END//
 
                 break
-
-            case "OPTION":
-                Center(spacing_('OPTION'))
-                randomly(category, option())
-                break
-            case "LIST":
-                readline.question('LIST')
-                randomly(category)
-                break
-            case "OUT":
-                startUp()
-                break
-            case "IN":
-                Food_feed(menu.All.list)
-                break
         }
-
 
         side_print("< Option > < List >", "< In > < Out >")
 
@@ -538,9 +567,6 @@ function option() {
         case '3':
             startUp()
             break;
-
-        default:
-            return "Shuffle"
     }
 
 }
