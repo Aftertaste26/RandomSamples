@@ -13,10 +13,11 @@ array2d.push([])
 
 console.log(name)
 console.log(array2d) */
+let readline = require('readline-sync')
+let print = console.log
+let input = readline.question
+let clear= console.clear
 
-
-//already exist
-for (let count = 0; count < 1000; count++) {
-
-console.log(count*10000000000000988)
-}
+input(' input Something>: ')
+clear()
+print('hi')

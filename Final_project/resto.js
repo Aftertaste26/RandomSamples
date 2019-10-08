@@ -5,7 +5,7 @@ let jollibee = {
     location: 'Festive Mall',
     specialty:' "Chickenjoy" fried chicken',
     category: [{
-        name: 'Burger and Sandwich | Value Meal |',
+        name: 'Burger and Sandwich',
         menu: [
             { name: 'champ', price: 158 },
             { name: 'cheesy bacon mushroom Champ', price: 172 },
@@ -17,16 +17,16 @@ let jollibee = {
             { name: 'Jolly Hotdog Classic', price: 87 }
         ]
     }, {
-        name: 'Chickenjoy | Value Meal |',
+        name: 'Chickenjoy',
         menu: [
-            { name: '1pc Chickenjoy | original or Spicy |', price: 85 },
-            { name: '2pc Chickenjoy | original or Spicy |', price: 145 },
-            { name: '1pc Chickenjoy | original or Spicy | with Jollibee Spagehetti', price: 120 },
-            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 140 },
+            { name: '1pc Chickenjoy', price: 85 },
+            { name: '2pc Chickenjoy', price: 145 },
+            { name: '1pc Chickenjoy with Jollibee Spagehetti', price: 120 },
+            { name: '1pc Chickenjoy with palabok', price: 140 },
             { name: 'Chickenjoy Super Value Meals', price: 120 }
         ]
     }, {
-        name: 'Rice Meals | Value Meal |',
+        name: 'Rice Meals',
         menu: [
             { name: 'Unltimate Burger Steak ', price: 130 },
             { name: '1pc Burger Steak', price: 53 },
@@ -37,7 +37,7 @@ let jollibee = {
             { name: 'Shanghai Rolls', price: 53 },
         ]
     }, {
-        name: 'Noodles | Value Meal |',
+        name: 'Noodles',
         menu: [
             { name: 'Jolly Spaghetti w/ Reg. Fries', price: 78 },
             { name: 'Jolly Spaghetti w/ Yum', price: 82 },
@@ -103,10 +103,10 @@ let mcdo = {
     }, {
         name: 'Chicken & Platters',
         menu: [
-            { name: '1pc Chickenjoy | original or Spicy |', price: 128 },
-            { name: '2pc Chickenjoy | original or Spicy |', price: 118 },
-            { name: '1pc Chickenjoy | original or Spicy | with Jolly Spagehetti', price: 128 },
-            { name: '1pc Chickenjoy | original or Spicy | with palabok', price: 128 },
+            { name: '1pc Chickenjoy', price: 128 },
+            { name: '2pc Chickenjoy', price: 118 },
+            { name: '1pc Chickenjoy with Jolly Spagehetti', price: 128 },
+            { name: '1pc Chickenjoy with palabok', price: 128 },
             { name: 'Chickenjoy Super Value Meals', price: 128 }
         ]
     }, {
@@ -145,32 +145,32 @@ let chowking = {
         name: 'Lauriat',
         menu: [
             { name: 'Chinese Style Fried Chicken', price: 164 },
-            { name: 'Chicken Supreme with drink', price: 193 },
-            { name: 'Tender Beef Broccoli with drink', price: 164 },
-            { name: 'Sweet & Sour Pork with drink', price: 142 },
-            { name: 'Orange Chicken with drink', price: 142 },
-            { name: 'Breaded Pork with drink', price: 142 },
-            { name: 'Breaded Fish with drink', price: 142 },
-            { name: 'Shanghai with drink', price: 142 }
+            { name: 'Chicken Supreme', price: 193 },
+            { name: 'Tender Beef Broccoli', price: 164 },
+            { name: 'Sweet & Sour Pork', price: 142 },
+            { name: 'Orange Chicken', price: 142 },
+            { name: 'Breaded Pork', price: 142 },
+            { name: 'Breaded Fish', price: 142 },
+            { name: 'Shanghai', price: 142 }
         ]
     }, {
         name: 'Chinese Rice Meal',
         menu: [
-            { name: 'Quarter Chicken Supreme with drink', price: 131 },
-            { name: 'Boneless Bangus with Garlic Rice and drink', price: 127 },
-            { name: 'tender Beef Broccoli with drink', price: 109 },
-            { name: 'Chopsuey with drink', price: 109 },
-            { name: 'Sweet and Sour Pork with drink', price: 98 },
-            { name: 'Orange chicken with drink', price: 98 }
+            { name: 'Quarter Chicken Supreme', price: 131 },
+            { name: 'Boneless Bangus with Garlic Rice', price: 127 },
+            { name: 'tender Beef Broccoli', price: 109 },
+            { name: 'Chopsuey', price: 109 },
+            { name: 'Sweet and Sour Pork', price: 98 },
+            { name: 'Orange chicken', price: 98 }
         ]
     }, {
         name: 'Chao Fan',
         menu: [
             { name: 'Yang Chao', price: 98 },
-            { name: 'Spicy with drink', price: 98 },
-            { name: 'Chorizo with drink', price: 54 },
-            { name: 'Pork with drink', price: 54 },
-            { name: 'Beef with drink', price: 54 }
+            { name: 'Spicy', price: 98 },
+            { name: 'Chorizo', price: 54 },
+            { name: 'Pork', price: 54 },
+            { name: 'Beef', price: 54 }
         ]
     }, {
         name: 'Dimsum & Sidedish',
@@ -452,7 +452,7 @@ module.exports.All = {
     )
 }
 
-module.exports.Category = [
+module.exports.Type = [
     this.All,
     this.FastFood,
     this.Milktea,

@@ -1,4 +1,7 @@
-let arr = 5
+let string ="in the beginning dfgh.fghfghfghfgh.dfgfhdfgfhfdgfdhfghghhfghgghjgfghjfghgfghf"
+let rd = require('readline-sync')
+//console.log(rd.question().toUpperCase())
+let test = process.stdout.write
+//console.log(JSON.stringify(test))
 
-arr = Math.ceil(arr/2)
-console.log(arr||0)
+console.log(test('d'))
